@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>bootstrap框架-与音乐相关网页</title>
+    <script type="text/javascript">
+        function go(){
+
+            window.location.href = "跳转页面文件";
+
+        }
+    </script>
+    <script type="text/javascript">
+        var index=0;
+        //改变图片
+        function ChangeImg() {
+            index++;
+            var a=document.getElementsByClassName("img-slide");
+            if(index>=a.length) index=0;
+            for(var i=0;i<a.length;i++){
+                a[i].style.display='none';
+            }
+            a[index].style.display='block';
+        }
+        //设置定时器，每隔两秒切换一张图片
+        setInterval(ChangeImg,2000);
+    </script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        body{
+            background: antiquewhite;
+            padding-top: 0px;
+        }
+
+        .fakeimg {
+            /*height: 200px;*/
+            background: #aaa;
+        }
+        .gif{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-right: 0px;
+            margin-left: 0px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-right: 0px;
+            padding-left: 0px;
+            background-color: white;
+            height:360px;
+        }
+
+        .rightnav{
+            padding: 10px 10px;
+
+            float: right;
+            margin:0 auto;
+        }
+
+        /*轮播图样式*/
+        .imgBox{
+            background-color: antiquewhite;
+            border-top: 0px ;
+            width: 100%;
+            /*height: 750px;*/
+            margin: 0 auto;
+            padding-top: 0px;
+
+        }
+        .imgBox img{
+            width: 100%;
+            height: 750px;
+            margin: 0px;
+            padding: 0px;
+
+        }
+        #wrap{
+
+            /*width: 200px;*/
+            height: 150px;
+            /*border: 1px solid #000;*/
+            position: relative;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+        }
+        #list{
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0;
+            padding: 0;
+            animation: move 12s infinite linear;
+            -webkit-animation: move 12s infinite linear;
+            width: 500%;
+        }
+        #list li {
+            list-style: none;
+            width: 200px;
+            height: 150px;
+            border: 0;
+            float: left;
+        }
+        /*此处设置展示全图片*/
+        #list li img{
+            background-size: contain;
+            width: 100%;
+            height: 100%;
+        }
+        @-webkit-keyframes move{
+            0% {
+                left: 0;
+            }
+            100% {
+                left: -800px;
+            }
+        }
+        @keyframes move {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: -800px;
+            }
+        }
+        #wrap:hover #list {
+            -webkit-animation-play-state: running; /*动画正在播放*/
+        }
+        .zitiyangshi{
+            font-size: 13px;
+            font-family: Arial;
+            color: #337ab7;
+            text-align: right;
+            padding-right: 20px;
+            padding-bottom: 20px;
+        }
+        /*照片墙*/
+        .box {
+            /*规定列的宽度*/
+            column-width: 200px;
+            /*规定列之间的间隔*/
+            column-gap: 15px;
+
+            width: 90%;
+            max-width: 1000px;
+            min-width: 200px;
+            text-align: center;
+            /*设置外边距(上右下左顺序 )*/
+            margin:15px 250px 15px 250px;
+        }
+
+
+
+        figure {
+
+            display: inline-block;
+
+            transform-style: preserve-3d;
+
+            border: 5px solid #ddd;
+
+            border-radius: 5px;
+
+            box-shadow: 3px 3px 4px #aaa;
+
+            z-index: -1;
+
+        }
+
+
+
+        img {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+        }
+
+
+
+        figure:hover {
+
+            position: relative;
+
+            transition: transform 3s;
+
+            transform: scale(1.5) rotateY(360deg);
+
+            z-index: 1;
+
+            box-shadow: none;
+
+        }
+
+
+    </style>
+</head>
+<body>
+<!--设置图片布满整个div-->
+<div class="gif">
+    <img src="img/2.gif"height="360px" width="100%">
+
+</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">J'Music</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="#">主页</a></li>
+                <li><a href="#">歌单</a></li>
+                <li><a href="#">歌手</a></li>
+                <li><a href="#">我的</a></li>
+            </ul>
+            <div class="rightnav">
+                <!--登录注册按钮-->
+                <button class="btn btn-link" data-toggle="modal" data-target="#myModal">登录</button>
+                <button class="btn  btn-link" data-toggle="modal" data-target="#myModal2">注册</button>
+
+                <!-- 模态框（Modal）登录部分-->
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+
+                            <!--登陆框头部-->
+
+                            <div class="modal-header">
+
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+
+                                    ×
+
+                                </button>
+
+                                <h4 class="modal-title" id="myModalLabel">
+
+                                    欢迎登录！
+
+                                </h4>
+
+                            </div>
+
+                            <!--登陆框中间部分(from表单)-->
+
+                            <div class="modal-body">
+
+                                <form class="form-horizontal" role="form">
+
+                                    <!--用户框-->
+
+                                    <div class="form-group">
+
+                                        <label for="username" class="col-sm-2 control-label">用户名</label>
+
+                                        <div class="col-sm-10">
+
+                                            <input type="text" class="form-control" id="username" placeholder="请输入用户名" required="required">
+
+                                        </div>
+
+                                    </div>
+
+                                    <!--密码框-->
+
+                                    <div class="form-group">
+
+                                        <label for="password" class="col-sm-2 control-label" >密码</label>
+
+                                        <div class="col-sm-10">
+
+                                            <input type="password" class="form-control" id="password" placeholder="请输入密码"required="required">
+
+                                        </div>
+
+                                    </div>
+
+                                    <!--记住密码-->
+
+                                    <div class="form-group">
+
+                                        <div class="col-sm-offset-2 col-sm-10">
+
+                                            <div class="checkbox">
+
+                                                <label>
+
+                                                    <input type="checkbox"> 记住密码
+
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!--登陆按钮-->
+
+                                    <div class="form-group">
+
+                                        <div class="col-sm-offset-2 col-sm-10">
+
+                                            <button type="submit" class="btn btn-info">登录</button>
+
+                                        </div>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 模态框（Modal） 注册部分-->
+
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+
+                            <!--登录框头部-->
+
+                            <div class="modal-header">
+
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+
+                                    ×
+
+                                </button>
+
+                                <h4 class="modal-title" id="myModalLabel2">
+
+                                    欢迎注册！
+
+                                </h4>
+
+                            </div>
+
+                            <!--注册框中间部分(from表单)-->
+
+                            <div class="modal-body">
+
+                                <form class="form-horizontal" role="form">
+
+                                    <!--用户框-->
+
+                                    <div class="form-group">
+
+                                        <label for="username" class="col-sm-2 control-label">用户名</label>
+
+                                        <div class="col-sm-10">
+
+                                            <input type="text" class="form-control" id="username2" placeholder="请输入用户名" required="required">
+
+                                        </div>
+
+                                    </div>
+
+                                    <!--密码框-->
+
+                                    <div class="form-group">
+
+                                        <label for="password" class="col-sm-2 control-label" >密码</label>
+
+                                        <div class="col-sm-10">
+
+                                            <input type="password" class="form-control" id="password2" placeholder="请输入密码" required="required">
+
+                                        </div>
+
+                                    </div>
+                                    <!--邮箱框-->
+
+                                    <div class="form-group">
+
+                                        <label for="email" class="col-sm-2 control-label" >邮箱</label>
+
+                                        <div class="col-sm-10">
+
+                                            <input type="email" class="form-control" id="email" placeholder="请输入邮箱地址" required="required">
+
+                                        </div>
+
+                                    </div>
+                                    <!--记住密码-->
+
+                                    <div class="form-group">
+
+                                        <div class="col-sm-offset-2 col-sm-10">
+
+                                            <div class="checkbox">
+
+                                                <label>
+
+                                                    <input type="checkbox"> 记住密码
+
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!--注册按钮-->
+
+                                    <div class="form-group">
+
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <!--此处设置点击跳转事件，在js中写函数实现跳转-->
+                                            <button type="submit" class="btn btn-info" onclick="go();">注册</button>
+
+                                        </div>
+                                    </div>
+
+                                </form></div></div></div></div></div>
+
+        </div>
+    </div>
+
+</nav>
+<!--轮播图-->
+<div class="imgBox">
+    <img class="img-slide img1" src="img/1.jpg" alt="1">
+    <img class="img-slide img2" src="img/2.jpg" alt="2">
+    <img class="img-slide img3" src="img/3.jpg" alt="3">
+</div>
+<hr>
+<div id="wrap">
+    <ul id="list">
+        <li><a href="#"><img src="img/1.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/2.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/3.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/4.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/6.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/6%20(2).jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/7.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/8.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/9.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/10.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/11.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/14.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/15.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/20.png" border="0" /></a></li>
+        <li><a href="#"><img src="img/logo.jpg" border="0" /></a></li>
+        <li><a href="#"><img src="img/timg.jpg" border="0" /></a></li>
+    </ul>
+</div>
+<hr>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <!--<h2>关于我</h2>-->
+            <h5>曲风</h5>
+            <div class="fakeimg">
+                <ul>
+                    <li>
+                        <a href="#">经典老歌</a>
+                    </li>
+                    <li>
+                        <a href="#">网络流行</a>
+                    </li>
+                    <li>
+                        <a href="#">最新歌曲</a>
+                    </li>
+                    <li>
+                        <a href="#">网络流行榜</a>
+                    </li>
+                    <li>
+                        <a href="#">古典音乐</a>
+                    </li>
+                    <li>
+                        <a href="#">古筝</a>
+                    </li>
+                    <li>
+                        <a href="#">佛教音乐</a>
+                    </li>
+                    <li>
+                        <a href="#">现代纯音乐</a>
+                    </li>
+                    <li>
+                        <a href="#">DJ</a>
+                    </li>
+                </ul>
+            </div>
+            <p>新歌推荐.</p>
+
+            <p>热门歌曲</p>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#">她说 - 林俊杰</a></li>
+                <li><a href="#">江南 - 林俊杰</a></li>
+                <li><a href="#">Yellow - Coldplay</a></li>
+            </ul>
+            <hr class="hidden-sm hidden-md hidden-lg">
+        </div>
+        </hr>
+        <div class="col-sm-8">
+            <h5>随笔<b>1</b></h5>
+            <div class="fakeimg">
+                &nbsp;&nbsp;&nbsp;&nbsp;如果有来生，要做一棵树，站成永恒。
+                没有悲欢的姿势，
+                一半在尘土里安详，
+                一半在风里飞扬；
+                一半洒落荫凉，
+                一半沐浴阳光。
+                非常沉默、非常骄傲。
+                从不依靠、从不寻找。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; 如果有来生，要化成一阵风，
+                一瞬间也能成为永恒。
+                没有善感的情怀，
+                没有多情的眼睛。
+                一半在雨里洒脱，
+                一半在春光里旅行；
+                寂寞了，孤自去远行，
+                把淡淡的思念统带走，
+                从不思念、从不爱恋；<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                如果有来生，要做一只鸟，
+                飞越永恒，没有迷途的苦恼。
+                东方有火红的希望，南方有温暖的巢床，
+                向西逐退残阳，向北唤醒芬芳。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                如果有来生，
+                希望每次相遇，
+                都能化为永恒 <br>
+                <h4 class="zitiyangshi"> -- 三毛 </h4>
+            </div>
+            <hr>
+            <h5>随笔<b>2</b></h5>
+            <div class="fakeimg">
+                &nbsp;&nbsp;&nbsp;&nbsp; 1.要始终保持敬畏之心，对阳光，对美，对痛楚。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;2.不要老在别人面前倾诉你的困境袒露你的脆弱。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;3.如果我们可以改变情绪，我们就可以改变未来。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; 4.有时可能别人不在乎你，但你不能不在乎自己。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; 5.人生如一杯茶，不会苦一辈子，但要苦一阵子。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;6.大丈夫处世，不能立功建业，几与草木同腐乎？<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; 7.意志坚强的人，他的世界充满着无限的可能性。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; 8.路，是自己走出来的；机会是自己创造出来的。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;9.成功就是把复杂的问题简单化，然后狠狠去做。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;10.生命太过短暂，今天放弃了明天不<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;11.目标的实现建立在“我要成功”的强烈愿望上。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;12.积极向上的人总是把苦难化为积极向上的动力。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;13.一个人最大的破产是绝望，最大的资产是希望。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;14.如果圆规的两只脚都动，永远也画不出一个圆。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;15.一帆风顺，并不等于行驶的是一条平坦的航线。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;16.不要老在别人面前倾诉你的困境袒露你的脆弱。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;17.思想如钻子，必须集中在一点钻下去才有力量。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; 18.如果圆规的两只脚都动，永远也画不出一个圆。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;19.一个人最大的破产是绝望，最大的资产是希望。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;20.能吃亏是做人的一种境界，是处世的一种睿智。<br>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--3d照片墙-->
+<div class="box">
+    <figure class="pic">
+        <img src="img/1.jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/6%20(2).jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/3.jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/4.jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/6.jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/7.jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/8.jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/9.jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/14.jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/11.jpg" />
+    </figure>
+    <figure class="pic">
+        <img src="img/20.png" />
+    </figure>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0 " >
+
+    <p>
+        关于 | 帮助 | 条款 | 反馈
+    </p>
+    <p>
+        Copyright@2020
+    </p>
+    <p>
+        Designed by JJX
+    </p>
+</div>
+
+
+</body>
+</html>
